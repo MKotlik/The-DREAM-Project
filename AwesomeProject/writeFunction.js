@@ -14,8 +14,9 @@ var line13 = 'Nombre de el Lugar,' + course.placeName + (','*30) + '\n';
 var line14 = 'Estructura,' + course.structure + (','*30) + '\n';
 var line15 = ','*31;
 var line16 = ',,,' + course.sessions + ','*(28-(course.sessions.length-1));
-var line17 = ',,Fecha' + ','*30;
-var line18 =
+var line17 = 'Participantes,,Fecha' + course.sessDates +
+','*(28-(course.sessions.length-1));
+var line18 = 'Nombre,Edad,Sexo'
 
 function CourseDPV(courseName) {
   this.id = coursesRun;

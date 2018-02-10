@@ -26,6 +26,7 @@ function CourseDPV(courseName) {
   this.structure = "";
   this.students = [];
   this.sessions = DPVSessions;
+  this.sessDates = []*DPVSession.length;
 }
 
 function CourseLPC(courseName) {
@@ -51,6 +52,7 @@ function CourseLPC(courseName) {
   this.structure = "";
   this.students = [];
   this.sessions = LPCSessions;
+  this.sessDates = []*LPCSession.length;
 }
 
 function CourseUnica(courseName) {
@@ -76,4 +78,5 @@ function CourseUnica(courseName) {
   this.structure = "";
   this.students = [];
   this.sessions = unicaSessions;
+  this.sessDates = []*unicaSession.length;
 }

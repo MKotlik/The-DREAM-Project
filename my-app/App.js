@@ -1,5 +1,7 @@
 import Storage from 'react-native-storage';
 import { AsyncStorage } from 'react-native';
+import React, { Component } from 'react';
+import { AppRegistry, Text, TextInput, View } from 'react-native';
 
 var DPVSessions = ["Desiciones", "Campo dos Riscos"];
 var LPCSessions = ["s1", "s2"];
@@ -31,9 +33,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
+
   render() {
     return (
       <View style={styles.container}>
+        <TextInput
+          style={{height: 40}}
+          placeholder="Type here to translate!"
+          onChangeText={(text) => this.setState({text})}
+          />
+          <Text style={{padding: 10, fontSize: 42}}>
+          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+          </Text>
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>

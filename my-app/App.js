@@ -32,8 +32,6 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
   render() {
-    var courseName = prompt("Name of new course?");
-    var
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
@@ -63,17 +61,26 @@ function save(course) {
   });
 }
 
+
+
 function writeFile(course) {
   var RNFS = require('react-native-fs');
   var path = RNFS.DocumentDirectoryPath + '/DreamProjectCourse.csv';
-  RNSF.writeFIle(path, 'This should be the first line','this the second',"",
-  'and this the fourth')
+  RNSF.writeFile(path, 'This should be the first line')
   .then ((success) => {
     console.log('file written');
   })
   .catch((err) => {
     console.log(err.message);
   });
+  RNSF.appendFile(path, 'This should be the first line')
+  .then ((success) => {
+    console.log('file written');
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+  RNSF.writeFile()
   RNSF.readFile(RNFS.DocumentDirectoryPath+'/DreamProjectCourse.csv')
   .then((result) => {
     render() {

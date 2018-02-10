@@ -49,6 +49,7 @@ class AttendanceScreen extends React.Component {
     this.state = {text: ''};
   }
 
+<<<<<<< HEAD
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -61,6 +62,24 @@ class AttendanceScreen extends React.Component {
             <Text style={{padding: 10, fontSize: 42}}>
               {this.state.text}
             </Text>
+=======
+export default class App extends React.Component {
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          style={{height: 40}}
+          placeholder="Type here to translate!"
+          onChangeText={(text) => this.setState({text})}
+          />
+          <Text style={{padding: 10, fontSize: 42}}>
+          {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+          </Text>
+        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Changes you make will automatically reload.</Text>
+        <Text>Shake your phone to open the developer menu.</Text>
+>>>>>>> e7f8fcd94751b311d94518f60463aabdb120f386
       </View>
     );
   }

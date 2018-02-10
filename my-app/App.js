@@ -1,5 +1,8 @@
 import Storage from 'react-native-storage';
 import { AsyncStorage } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, AppRegistry, Text, TextInput, View, Button} from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
 var DPVSessions = ["Desiciones", "Campo dos Riscos"];
 var LPCSessions = ["s1", "s2"];
@@ -26,31 +29,61 @@ catch(err) {
   });
 }
 
-// Default stuff
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default class App extends React.Component {
+class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Home Screen</Text>
+        <Button
+          title="Go to Attendance"
+          onPress={() => this.props.navigation.navigate('Attendance')}
+        />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+class AttendanceScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Attendance Screen</Text>
+          <TextInput
+            style={{height: 40}}
+            placeholder="Type here to translate!"
+            onChangeText={(text) => this.setState({text})}
+            />
+            <Text style={{padding: 10, fontSize: 42}}>
+              {this.state.text}
+            </Text>
+      </View>
+    );
+  }
+}
+
+const RootStack = StackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Attendance: {
+      screen: AttendanceScreen,
+    },
   },
-});
-//end default
+  {
+    initialRouteName: 'Home',
+  });
+
+export default class App extends React.Component {
+  render() {
+    return <RootStack />;
+  }
+}
 
 function save(course) {
   storage.save({
@@ -60,8 +93,6 @@ function save(course) {
     expires: NULL,
   });
 }
-
-
 
 function writeFile(course) {
   var RNFS = require('react-native-fs');
